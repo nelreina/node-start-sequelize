@@ -1,0 +1,43 @@
+{
+  "name": "node-start-sequelize",
+  "version": "0.0.1",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jest",
+    "dev": "nodemon --watch src --exec babel-node src/index",
+    "build:package-json": "babel-node ./build",
+    "build:babel": "babel src --out-dir dist",
+    "build": "npm-run-all build:babel build:package-json copy:config",
+    "copy:config": "cp ./src/config.json ./dist/config.json",
+    "prestart": "npm-run-all build",
+    "start": "node dist/index",
+    "seed": "babel-node src/seed/init"
+  },
+  "keywords": [
+    "node",
+    "babel"
+  ],
+  "author": "Nelson Reina (@nelreina)",
+  "license": "ISC",
+  "dependencies": {
+    "json-2-csv": "^2.1.2",
+    "lodash": "^4.16.4",
+    "moment": "^2.15.1",
+    "node-fetch": "^1.6.3",
+    "pg": "^6.1.2",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^3.29.0",
+    "string": "^3.3.3"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-runtime": "^6.26.0",
+    "nodemon": "^1.12.1",
+    "npm-run-all": "^3.1.2",
+    "write-json-file": "^2.0.0"
+  }
+}
